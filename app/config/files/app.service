@@ -1,0 +1,14 @@
+[Unit]
+Description=uWSGI instance to serve myproject
+After=network.target
+
+[Service]
+User=dos
+Group=www-data
+
+WorkingDirectory=/home/dos/labA/pro/simple-webapp
+Environment="PATH=/usr/local/bin/"
+ExecStart=/usr/local/bin/uwsgi --ini app.ini
+
+[Install]
+WantedBy=multi-user.target

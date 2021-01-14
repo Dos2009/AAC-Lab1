@@ -1,0 +1,7 @@
+---
+- name: install_flask
+  pip:
+   name:
+    - flask 
+    - flask-mysql 
+    - uwsgi

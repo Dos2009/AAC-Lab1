@@ -1,0 +1,15 @@
+---
+#- name: Check WDir exist
+#  stat:
+#   path: /home/dos/labA/pro/
+#  register: result
+
+- name: Create WDirectory
+  file: path=/home/dos/labA/pro/ state=directory
+
+- name: copy app files
+  copy: src=simple-webapp dest=/home/dos/labA/pro/
+  notify:
+   - fix_owns
+
+- meta: flush_handlers

@@ -1,0 +1,31 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: true
+  notify:
+   - activate_firewall
+
+- meta: flush_handlers
+
+- name: Enable and start Nginx Service
+  systemd: name=nginx enabled=yes state=started
+ 
+  
+- name: Allow Port 80
+  ufw:
+   rule: allow
+   port: '80'
+   proto: tcp
+
+
+- name: Allow Port 22
+  ufw:
+   rule: allow
+   port: '22'
+   proto: tcp
+  notify:
+   - reload_firewall
+
+- meta: flush_handlers

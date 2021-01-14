@@ -1,0 +1,4 @@
+---
+- name: fix_owns
+  command: chown dos:dos /home/dos -R
+  

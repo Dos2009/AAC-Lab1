@@ -1,0 +1,6 @@
+---
+- hosts: DBCM
+  roles:
+   - deploy_maria
+   - deploy_galera
+   - test_cluster

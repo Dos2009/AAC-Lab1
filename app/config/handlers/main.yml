@@ -1,0 +1,12 @@
+---
+- name: service_enable
+  command: systemctl enable app
+
+- name: service_start
+  command: systemctl start app
+
+- name: sites_enable
+  command: ln -s /etc/nginx/sites-available/app /etc/nginx/sites-enabled/
+
+- name: nginx_reload
+  command: systemctl restart nginx

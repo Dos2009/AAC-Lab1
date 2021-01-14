@@ -1,0 +1,14 @@
+---
+- name: copy service file
+  copy: src=app.service dest=/etc/systemd/system/
+  notify:
+   - service_enable
+   - service_start
+
+- name: copy nginx file
+  copy: src=app dest=/etc/nginx/sites-available/
+  notify:
+   - sites_enable
+   - nginx_reload
+
+- meta: flush_handlers

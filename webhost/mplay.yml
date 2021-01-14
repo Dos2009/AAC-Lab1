@@ -2,4 +2,4 @@
 - hosts: Web
   roles:
    - nginx
-     #- flask
+   - flask

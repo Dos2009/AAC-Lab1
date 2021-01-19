@@ -14,3 +14,4 @@
     name: employee_db
     state: import
     target: /root/employee_db.sql
+    login_unix_socket: /var/lib/mysql/mysql.sock

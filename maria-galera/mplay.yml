@@ -3,4 +3,4 @@
   roles:
    - deploy_maria
    - deploy_galera
-   - test_cluster
+   #- test_cluster

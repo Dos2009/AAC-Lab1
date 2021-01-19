@@ -20,6 +20,7 @@
     name: appuser
     password: appuser
     priv: 'employee_db.*:ALL'
+    host: '%'
     state: present
     login_unix_socket: /var/lib/mysql/mysql.sock   #for maria10.4
   no_log: True     #Prevent ansible from logging password

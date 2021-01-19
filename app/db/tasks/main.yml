@@ -1,11 +1,16 @@
 ---
+- name: Create
+  mysql_db:
+    name: employee_db
+    state: present
+    login_unix_socket: /var/lib/mysql/mysql.sock
+
 - name: Send DB SQL file
   copy: src=employee_db.sql dest=/root
-
-
+    
 - name: Restore DB
-  shell: mysql -uroot employee_db < /root/employee_db.sql 
-  #mysql_db:
-  #  name: employee_db
-  #  state: import
-  #  target: /root/employee_db.sql
+  #shell: mysql -uroot employee_db < /root/employee_db.sql 
+  mysql_db:
+    name: employee_db
+    state: import
+    target: /root/employee_db.sql

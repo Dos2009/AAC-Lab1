@@ -10,11 +10,12 @@
 
 - meta: flush_handlers
 
-- name: Install MariaDB PKGS
+- name: Install MariaDB PKGS and PyMySQL
   dnf:
    name:
     - mariadb-server
     - MariaDB-client
+    - python3-PyMySQL
    state: latest
 
 - name: Enable and start MariaDB Service

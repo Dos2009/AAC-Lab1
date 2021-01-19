@@ -1,9 +1,9 @@
 ---
-- name: Create
+- name: Create employee DB
   mysql_db:
     name: employee_db
     state: present
-    login_unix_socket: /var/lib/mysql/mysql.sock
+    login_unix_socket: /var/lib/mysql/mysql.sock   #for maria10.4
 
 - name: Send DB SQL file
   copy: src=employee_db.sql dest=/root
@@ -14,4 +14,12 @@
     name: employee_db
     state: import
     target: /root/employee_db.sql
-    login_unix_socket: /var/lib/mysql/mysql.sock
+    login_unix_socket: /var/lib/mysql/mysql.sock   #for maria10.4
+- name: Create appuser for DB
+  mysql_user:
+    name: appuser
+    password: appuser
+    priv: 'employee_db.*:ALL'
+    state: present
+    login_unix_socket: /var/lib/mysql/mysql.sock   #for maria10.4
+  no_log: True     #Prevent ansible from logging password
